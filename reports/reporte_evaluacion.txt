@@ -1,0 +1,23 @@
+==================================================
+EVALUACION DEL MODELO SVM
+Clase positiva: cliente que abandona el banco (1)
+==================================================
+
+Accuracy: 0.8540
+ROC-AUC:  0.8114
+
+VN: 1550 | FP: 43 | FN: 249 | VP: 158
+
+Matriz de confusion (filas reales, columnas predichas):
+[[1550   43]
+ [ 249  158]]
+
+Reporte de clasificacion:
+              precision    recall  f1-score   support
+
+Se queda (0)     0.8616    0.9730    0.9139      1593
+   Se va (1)     0.7861    0.3882    0.5197       407
+
+    accuracy                         0.8540      2000
+   macro avg     0.8238    0.6806    0.7168      2000
+weighted avg     0.8462    0.8540    0.8337      2000
