@@ -39,21 +39,26 @@ Este proyecto implementa un ciclo completo de ciencia de datos e ingeniería del
 ## 3. Arquitectura del Proyecto y Flujo Técnico
 
     svm-knowledge-engineering/
-    ├── README.md                  # Documentación técnica, diccionario de datos y guía de uso
-    ├── requirements.txt           # Dependencias del entorno de Python
+    ├── Dashboard_Churn_SVM.pbix            # Tablero ejecutivo interactivo en Power BI (4 páginas)
+    ├── tema_svm.json                       # Tema visual corporativo importado en Power BI
+    ├── README.md                           # Documentación técnica, diccionario de datos y guía de uso
+    ├── requirements.txt                    # Dependencias del entorno de Python
+    ├── assets/                             # Plantillas HD (16:9) para el diseño del tablero Power BI
     ├── data/
-    │   ├── raw/                   # Dataset original sin modificar (Churn_Modelling.csv)
-    │   └── processed/             # Datos intermedios limpiados e imputados
+    │   ├── raw/                            # Dataset original sin modificar (Churn_Modelling.csv)
+    │   └── processed/                      # Datos limpios y tabla maestra para Power BI (churn_powerbi_dashboard.csv)
+    ├── reports/                            # Reporte estadístico, matriz de confusión y curva ROC-AUC
     ├── src/
-    │   ├── preprocessing.py       # Limpieza de duplicados, SimpleImputer, OneHotEncoder y StandardScaler
-    │   ├── train.py               # Entrenamiento del clasificador SVM (SVC) y ajuste de hiperparámetros
-    │   └── evaluate.py            # Cálculo de métricas, Matriz de Confusión y curva ROC-AUC
+    │   ├── preprocessing.py                # Limpieza de duplicados, SimpleImputer, OneHotEncoder y StandardScaler
+    │   ├── train.py                        # Optimización de kernels SVM, entrenamiento, serialización y exportación BI
+    │   ├── evaluate.py                     # Cálculo de métricas, Matriz de Confusión y curva ROC-AUC
+    │   └── generate_pbi_backgrounds.py     # Generador de plantillas visuales para Power BI
     ├── models/
-    │   ├── svm_model.joblib       # Clasificador SVM entrenado y serializado
-    │   ├── scaler.joblib          # Objeto StandardScaler ajustado con datos de entrenamiento
-    │   └── encoder.joblib         # Objeto ColumnTransformer / OneHotEncoder ajustado
+    │   ├── svm_model.joblib                # Clasificador SVM entrenado y serializado
+    │   ├── scaler.joblib                   # Objeto StandardScaler ajustado con datos de entrenamiento
+    │   └── encoder.joblib                  # Objeto ColumnTransformer / OneHotEncoder ajustado
     └── app/
-        └── dashboard.py           # Interfaz interactiva en Streamlit para simulación en tiempo real
+        └── dashboard.py                    # Simulador interactivo en Streamlit para inferencia en vivo
 
 ## 4. Asignación Modular del Equipo (7 Integrantes)
 

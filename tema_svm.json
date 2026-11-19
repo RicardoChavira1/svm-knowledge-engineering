@@ -1,0 +1,89 @@
+{
+  "name": "Tema Ejecutivo SVM Churn",
+  "dataColors": [
+    "#4180AB",
+    "#1E293B",
+    "#DC2626",
+    "#38BDF8",
+    "#D97706",
+    "#16A34A",
+    "#8AB3CF",
+    "#64748B"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1E293B",
+  "tableAccent": "#4180AB",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#CBD5E1" } },
+            "radius": 10
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#94A3B8" } },
+            "position": "Outer",
+            "preset": "BottomRight"
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontColor": { "solid": { "color": "#1E293B" } },
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 12
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": { "solid": { "color": "#E4EBF0" } },
+            "transparency": 0
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "background": [
+          {
+            "color": { "solid": { "color": "#1E293B" } },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#1E293B" } },
+            "radius": 10
+          }
+        ],
+        "labels": [
+          {
+            "color": { "solid": { "color": "#38BDF8" } },
+            "fontFamily": "Segoe UI Bold"
+          }
+        ],
+        "categoryLabels": [
+          {
+            "color": { "solid": { "color": "#E2E8F0" } }
+          }
+        ]
+      }
+    }
+  }
+}
