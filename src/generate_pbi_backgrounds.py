@@ -1,6 +1,6 @@
 """
-Generador automático de fondos ejecutivos (16:9 HD) para el Dashboard en Power BI.
-Crea 4 plantillas en assets/ alineadas con la paleta del proyecto SVM.
+Generador automático de 7 plantillas ejecutivas (16:9 HD) para Power BI.
+Alineado a la defensa del 24 de noviembre de 2026 y la paleta oficial del proyecto SVM.
 """
 
 from pathlib import Path
@@ -16,7 +16,6 @@ plt.rcParams["font.sans-serif"] = ["Segoe UI", "DejaVu Sans", "Arial"]
 OUT_DIR = Path("assets")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-# Paleta ejecutiva del proyecto
 BG_LIGHT = "#E4EBF0"
 NAVY = "#1E293B"
 NAVY_DARK = "#0F172A"
@@ -42,7 +41,6 @@ def new_canvas(bg_color=BG_LIGHT):
 
 
 def add_card(ax, x, y, w, h, facecolor=WHITE, edgecolor=BORDER, radius=0.015, lw=1.2, zorder=2):
-    # Sombra suave
     ax.add_patch(
         FancyBboxPatch(
             (x + 0.003, y - 0.005),
@@ -70,42 +68,43 @@ def add_card(ax, x, y, w, h, facecolor=WHITE, edgecolor=BORDER, radius=0.015, lw
 
 
 def add_sidebar_and_header(ax, title, subtitle):
-    # Barra lateral oscura para el menú de navegación vertical
+    # Barra lateral oscura dimensionada para 7 botones verticales
     ax.add_patch(Rectangle((0, 0), 0.16, 1, facecolor=NAVY, edgecolor="none", zorder=2))
     ax.add_patch(Rectangle((0.158, 0), 0.003, 1, facecolor=BLUE, edgecolor="none", zorder=3))
 
-    # Marca superior en la barra lateral
-    ax.text(0.08, 0.93, "SVM ANALYTICS", color=CYAN, fontsize=13, fontweight="bold", ha="center", va="center", zorder=4)
-    ax.text(0.08, 0.892, "CHURN BANCARIO", color="#CBD5E1", fontsize=8.5, ha="center", va="center", zorder=4)
-    ax.plot([0.02, 0.14], [0.855, 0.855], color="#334155", lw=1.2, zorder=4)
-    ax.text(0.08, 0.825, "MENÚ PRINCIPAL", color="#94A3B8", fontsize=8, fontweight="bold", ha="center", va="center", zorder=4)
+    ax.text(0.08, 0.945, "SVM ANALYTICS", color=CYAN, fontsize=12.5, fontweight="bold", ha="center", va="center", zorder=4)
+    ax.text(0.08, 0.910, "CHURN BANCARIO", color="#CBD5E1", fontsize=8.2, ha="center", va="center", zorder=4)
+    ax.plot([0.02, 0.14], [0.880, 0.880], color="#334155", lw=1.2, zorder=4)
+    ax.text(0.08, 0.855, "MENÚ PRINCIPAL", color="#94A3B8", fontsize=7.8, fontweight="bold", ha="center", va="center", zorder=4)
 
-    # Pie de barra lateral
-    ax.plot([0.02, 0.14], [0.10, 0.10], color="#334155", lw=1.0, zorder=4)
-    ax.text(0.08, 0.068, "TecNM · Campus Toluca", color="#CBD5E1", fontsize=8, ha="center", va="center", zorder=4)
-    ax.text(0.08, 0.042, "Ing. del Conocimiento", color="#94A3B8", fontsize=7.5, ha="center", va="center", zorder=4)
+    # Pie compacto para dejar máximo espacio al navegador (y=0.095 a y=0.835)
+    ax.plot([0.02, 0.14], [0.088, 0.088], color="#334155", lw=1.0, zorder=4)
+    ax.text(0.08, 0.058, "TecNM · Campus Toluca", color="#CBD5E1", fontsize=7.8, ha="center", va="center", zorder=4)
+    ax.text(0.08, 0.033, "Ing. del Conocimiento", color="#94A3B8", fontsize=7.3, ha="center", va="center", zorder=4)
 
     # Encabezado superior derecho
     add_card(ax, 0.175, 0.895, 0.81, 0.085, facecolor=WHITE, edgecolor=BORDER, radius=0.012, zorder=2)
     ax.add_patch(Rectangle((0.175, 0.895), 0.006, 0.085, facecolor=BLUE, edgecolor="none", zorder=3))
-    ax.text(0.195, 0.952, title, color=TEXT_DARK, fontsize=17, fontweight="bold", ha="left", va="center", zorder=4)
-    ax.text(0.195, 0.916, subtitle, color=TEXT_MUTED, fontsize=9.8, ha="left", va="center", zorder=4)
+    ax.text(0.195, 0.952, title, color=TEXT_DARK, fontsize=16.5, fontweight="bold", ha="left", va="center", zorder=4)
+    ax.text(0.195, 0.916, subtitle, color=TEXT_MUTED, fontsize=9.6, ha="left", va="center", zorder=4)
+
+
+def add_filter_bar(ax, label="FILTROS\nDINÁMICOS"):
+    add_card(ax, 0.175, 0.795, 0.81, 0.082, facecolor="#F8FAFC", edgecolor=BORDER, radius=0.012, zorder=2)
+    ax.text(0.19, 0.836, label, color=BLUE, fontsize=8.3, fontweight="bold", ha="left", va="center", zorder=3)
 
 
 def build_portada():
     fig, ax = new_canvas("#F8FAFC")
 
-    # Mitad derecha: panel tech oscuro con frontera SVM estilizada
     ax.add_patch(Rectangle((0.49, 0), 0.51, 1, facecolor=NAVY_DARK, edgecolor="none", zorder=1))
     ax.add_patch(Rectangle((0.49, 0), 0.005, 1, facecolor=CYAN, edgecolor="none", zorder=3))
 
-    # Cuadrícula sutil en panel derecho
     for gx in np.linspace(0.52, 0.98, 12):
         ax.plot([gx, gx], [0.05, 0.95], color="#1E293B", lw=0.8, zorder=2)
     for gy in np.linspace(0.08, 0.92, 10):
         ax.plot([0.51, 0.98], [gy, gy], color="#1E293B", lw=0.8, zorder=2)
 
-    # Curvas de nivel simulando hiperplano y margen blando Kernel RBF
     rng = np.random.default_rng(42)
     t = np.linspace(0.54, 0.96, 200)
     y_center = 0.56 + 0.14 * np.sin((t - 0.54) * 9.5)
@@ -114,7 +113,6 @@ def build_portada():
     ax.plot(t, y_center + 0.08, color=CYAN, lw=1.3, ls="--", alpha=0.7, zorder=4)
     ax.plot(t, y_center - 0.08, color=CYAN, lw=1.3, ls="--", alpha=0.7, zorder=4)
 
-    # Puntos de clases (Retenido vs Fuga)
     x_safe = rng.uniform(0.54, 0.94, 48)
     y_safe = 0.56 + 0.14 * np.sin((x_safe - 0.54) * 9.5) - rng.uniform(0.11, 0.27, 48)
     x_risk = rng.uniform(0.54, 0.94, 34)
@@ -122,11 +120,9 @@ def build_portada():
     ax.scatter(x_safe, y_safe, s=55, color=BLUE, edgecolors=CYAN, linewidths=0.8, alpha=0.9, zorder=5)
     ax.scatter(x_risk, y_risk, s=55, color=RED, edgecolors="#FCA5A5", linewidths=0.8, alpha=0.9, zorder=5)
 
-    # Etiquetas del gráfico derecho
     ax.text(0.745, 0.91, "HIPERPLANO NO LINEAL · KERNEL RBF", color=CYAN, fontsize=11, fontweight="bold", ha="center", zorder=6)
     ax.text(0.745, 0.875, "Separación de cartera bancaria en espacio de alta dimensión", color="#94A3B8", fontsize=9.5, ha="center", zorder=6)
 
-    # Tarjetas métricas en la base derecha
     stats = [
         ("10,000", "Clientes Analizados"),
         ("85.40%", "Exactitud SVM (RBF)"),
@@ -138,7 +134,6 @@ def build_portada():
         ax.text(bx + 0.069, 0.175, val, color=CYAN, fontsize=16, fontweight="bold", ha="center", va="center", zorder=6)
         ax.text(bx + 0.069, 0.125, lbl, color="#E2E8F0", fontsize=8.5, ha="center", va="center", zorder=6)
 
-    # Mitad izquierda: información institucional y espacio libre para el botón "Ver Informe"
     add_card(ax, 0.05, 0.855, 0.34, 0.048, facecolor="#E0F2FE", edgecolor="#7DD3FC", radius=0.015, lw=1.0, zorder=3)
     ax.text(0.22, 0.879, "TECNM CAMPUS TOLUCA  •  ING. DEL CONOCIMIENTO", color=BLUE, fontsize=8.5, fontweight="bold", ha="center", va="center", zorder=4)
 
@@ -148,7 +143,7 @@ def build_portada():
         0.645,
         "Informe ejecutivo y diagnóstico predictivo sobre 10,000 clientes\n"
         "bancarios para identificar perfiles en riesgo de abandono y\n"
-        "cuantificar el capital expuesto en cartera (MXN).",
+        "evaluar clientes nuevos en tiempo real (MXN).",
         color=TEXT_MUTED,
         fontsize=11,
         ha="left",
@@ -157,7 +152,6 @@ def build_portada():
         zorder=4,
     )
 
-    # Bloque de integrantes y docente
     add_card(ax, 0.05, 0.255, 0.40, 0.30, facecolor=WHITE, edgecolor=BORDER, radius=0.014, zorder=3)
     ax.text(0.07, 0.525, "DOCENTE: Ing. Rafael Hernández López  |  Grupo 219900", color=BLUE, fontsize=9.2, fontweight="bold", ha="left", va="center", zorder=4)
     ax.plot([0.07, 0.43], [0.50, 0.50], color=BORDER, lw=1.0, zorder=4)
@@ -174,25 +168,47 @@ def build_portada():
     ]
     ax.text(0.075, 0.362, "\n".join(integrantes), color=TEXT_MUTED, fontsize=9.3, ha="left", va="center", linespacing=1.42, zorder=4)
 
-    ax.text(0.05, 0.06, "Entrega Proyecto Técnico y Dashboard: 19 de noviembre de 2026", color="#64748B", fontsize=8.8, ha="left", va="center", zorder=4)
+    ax.text(0.05, 0.06, "Presentación Ejecutiva y Defensa: 24 de noviembre de 2026", color="#64748B", fontsize=8.8, ha="left", va="center", zorder=4)
 
     fig.savefig(OUT_DIR / "bg_portada.png", dpi=120)
     plt.close(fig)
 
 
-def build_dashboard():
+def build_clientes():
     fig, ax = new_canvas(BG_LIGHT)
     add_sidebar_and_header(
         ax,
-        "Dashboard Ejecutivo de Clientes y Riesgo de Fuga",
-        "Indicadores clave de negocio (KPIs), segmentación interactiva y capital expuesto en MXN",
+        "Análisis de Clientes y Perfiles de Riesgo de Fuga",
+        "Indicadores clave (KPIs), segmentación demográfica y Top clientes expuestos en MXN",
     )
-
-    # Franja sutil para los 3 filtros desplegables
-    add_card(ax, 0.175, 0.795, 0.81, 0.082, facecolor="#F8FAFC", edgecolor=BORDER, radius=0.012, zorder=2)
-    ax.text(0.19, 0.836, "FILTROS\nDINÁMICOS", color=BLUE, fontsize=8.5, fontweight="bold", ha="left", va="center", zorder=3)
-
+    add_filter_bar(ax)
+    fig.savefig(OUT_DIR / "bg_clientes.png", dpi=120)
+    # También sobreescribe bg_dashboard.png para mantener compatibilidad inmediata
     fig.savefig(OUT_DIR / "bg_dashboard.png", dpi=120)
+    plt.close(fig)
+
+
+def build_geografico():
+    fig, ax = new_canvas(BG_LIGHT)
+    add_sidebar_and_header(
+        ax,
+        "Análisis Geográfico y Comportamiento Regional",
+        "Comparativa de abandono real vs. predicción SVM y capital en riesgo por mercado (Francia, Alemania, España)",
+    )
+    add_filter_bar(ax, label="FILTROS\nREGIONALES")
+    fig.savefig(OUT_DIR / "bg_geografico.png", dpi=120)
+    plt.close(fig)
+
+
+def build_productos():
+    fig, ax = new_canvas(BG_LIGHT)
+    add_sidebar_and_header(
+        ax,
+        "Análisis de Productos Bancarios y Perfil Financiero",
+        "Impacto de la tenencia de productos (70.15% riesgo en monoproducto), buró de crédito y antigüedad",
+    )
+    add_filter_bar(ax, label="FILTROS\nFINANCIEROS")
+    fig.savefig(OUT_DIR / "bg_productos.png", dpi=120)
     plt.close(fig)
 
 
@@ -204,11 +220,9 @@ def build_diagnostico():
         "Comparativa de hiperparámetros por kernel (Conjunto de prueba estratificado: 2,000 clientes)",
     )
 
-    # Panel superior con tabla de optimización de kernels ya maquetada
     add_card(ax, 0.175, 0.675, 0.81, 0.20, facecolor=WHITE, edgecolor=BORDER, radius=0.014, zorder=2)
     ax.text(0.195, 0.845, "COMPARATIVA DE OPTIMIZACIÓN DE KERNELS (C = 1.0, gamma = 'scale')", color=BLUE, fontsize=10.5, fontweight="bold", ha="left", va="center", zorder=3)
 
-    # Encabezados de tabla
     cols_x = [0.20, 0.34, 0.47, 0.60, 0.72]
     headers = ["Kernel Evaluado", "Exactitud (Acc)", "F1-Score (Fuga)", "Área ROC-AUC", "Dictamen Técnico"]
     ax.add_patch(Rectangle((0.195, 0.795), 0.77, 0.032, facecolor="#F1F5F9", edgecolor="none", zorder=3))
@@ -229,6 +243,28 @@ def build_diagnostico():
             ax.text(cx, ry, val, color=BLUE if (highlight and cx == 0.20) else col, fontsize=9.2, fontweight=weight, ha="left", va="center", zorder=4)
 
     fig.savefig(OUT_DIR / "bg_diagnostico.png", dpi=120)
+    plt.close(fig)
+
+
+def build_nuevos():
+    fig, ax = new_canvas(BG_LIGHT)
+    add_sidebar_and_header(
+        ax,
+        "Predicción en Vivo: Clientes Completamente Nuevos (Fuera del Dataset)",
+        "Inferencia directa con modelos .joblib: simulador interactivo en tiempo real + registro de casos nuevos",
+    )
+
+    # Zona izquierda: Simulador en vivo con parámetros + Visual Python
+    add_card(ax, 0.175, 0.035, 0.445, 0.840, facecolor="#F8FAFC", edgecolor=BORDER, radius=0.014, zorder=2)
+    ax.add_patch(Rectangle((0.175, 0.863), 0.445, 0.012, facecolor=BLUE, edgecolor="none", zorder=3))
+    ax.text(0.192, 0.835, "OPCIÓN A · SIMULADOR SVM EN VIVO (PYTHON EN POWER BI)", color=BLUE, fontsize=9.5, fontweight="bold", ha="left", va="center", zorder=4)
+
+    # Zona derecha: Registro / Lote de nuevos clientes evaluados desde CLI
+    add_card(ax, 0.635, 0.035, 0.350, 0.840, facecolor="#F8FAFC", edgecolor=BORDER, radius=0.014, zorder=2)
+    ax.add_patch(Rectangle((0.635, 0.863), 0.350, 0.012, facecolor=NAVY, edgecolor="none", zorder=3))
+    ax.text(0.652, 0.835, "OPCIÓN B · REGISTRO DE NUEVOS CASOS", color=NAVY, fontsize=9.5, fontweight="bold", ha="left", va="center", zorder=4)
+
+    fig.savefig(OUT_DIR / "bg_nuevos.png", dpi=120)
     plt.close(fig)
 
 
@@ -277,8 +313,8 @@ def build_conclusiones():
             "(79.65%) y polinomial (84.75%), logrando\n"
             "un ROC-AUC de 0.8114.\n\n"
             "Alcanza 78.61% de precisión al alertar\n"
-            "fugas reales, reduciendo falsas alarmas\n"
-            "en campañas de retención.",
+            "fugas reales y evalúa clientes nuevos\n"
+            "en tiempo real con los artefactos .joblib.",
         ),
     ]
 
@@ -291,7 +327,6 @@ def build_conclusiones():
         ax.plot([cx + 0.018, cx + 0.238], [0.655, 0.655], color=BORDER, lw=1.0, zorder=4)
         ax.text(cx + 0.018, 0.505, body, color=TEXT_MUTED, fontsize=9.8, ha="left", va="center", linespacing=1.48, zorder=4)
 
-    # Tarjeta inferior de acciones de negocio
     add_card(ax, 0.175, 0.045, 0.81, 0.265, facecolor=NAVY, edgecolor=NAVY, radius=0.015, zorder=2)
     ax.add_patch(Rectangle((0.175, 0.045), 0.008, 0.265, facecolor=GREEN, edgecolor="none", zorder=3))
     ax.text(0.20, 0.27, "PLAN DE ACCIÓN RECOMENDADO PARA EL BANCO", color=CYAN, fontsize=11.5, fontweight="bold", ha="left", va="center", zorder=4)
@@ -299,7 +334,7 @@ def build_conclusiones():
     acciones = [
         "1. Campaña de Venta Cruzada (Cross-Selling): Ofrecer un segundo producto (tarjeta sin anualidad o inversión) a clientes monoproducto con saldo alto para reducir su tasa de abandono.",
         "2. Atención Prioritaria a Segmento Maduro (46-60 años) y Alemania: Asignar ejecutivos de retención a clientes cuya probabilidad SVM supere el 65% (Riesgo Crítico).",
-        "3. Integración Operativa en Tiempo Real: Utilizar el simulador SVM (Streamlit) en sucursales para evaluar nuevos perfiles antes de que cancelen su cuenta y actualizar el tablero mensualmente.",
+        "3. Evaluación Preventiva de Nuevos Perfiles: Utilizar el módulo de predicción en vivo integrado en Power BI para puntuar clientes nuevos y anticipar fugas antes de la cancelación.",
     ]
     ax.text(0.20, 0.15, "\n\n".join(acciones), color="#E2E8F0", fontsize=9.8, ha="left", va="center", linespacing=1.35, zorder=4)
 
@@ -309,7 +344,10 @@ def build_conclusiones():
 
 if __name__ == "__main__":
     build_portada()
-    build_dashboard()
+    build_clientes()
+    build_geografico()
+    build_productos()
     build_diagnostico()
+    build_nuevos()
     build_conclusiones()
-    print("[+] 4 plantillas HD generadas correctamente en la carpeta 'assets/'")
+    print("[+] 7 plantillas HD generadas correctamente en 'assets/'")

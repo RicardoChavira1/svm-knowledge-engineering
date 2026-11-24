@@ -1,0 +1,6 @@
+﻿ID_Nuevo,Nombre_Cliente,Pais_ES,Pais_Modelo,Genero_ES,Age,Tenure,CreditScore,Saldo_MXN,Salario_MXN,NumOfProducts,Prediccion_SVM,Dictamen_SVM,Probabilidad_Fuga_Pct,Distancia_Hiperplano,Zona_SVM,Capital_En_Riesgo_MXN,Fecha_Evaluacion
+NEW-001,Sofía Mendoza (Demo),México,Spain,Femenino,31,6,730,450000.0,980000.0,2,0,Cliente Estable (0),9.89,-1.187,Zona Segura (Fidelizado),0.0,2026-11-23 18:54
+NEW-002,Hans Weber (Demo),Alemania,Germany,Masculino,55,3,590,2650000.0,1450000.0,1,1,Riesgo de Fuga (1),90.46,1.0608,Riesgo Crítico Confirmado,2650000.0,2026-11-23 18:54
+NEW-003,Laura Castillo (Demo),España,Spain,Femenino,49,2,615,1950000.0,1100000.0,3,1,Riesgo de Fuga (1),96.83,1.6515,Riesgo Crítico Confirmado,1950000.0,2026-11-23 18:54
+NEW-004,Jean Moreau (Demo),Francia,France,Masculino,42,5,660,1600000.0,1250000.0,1,0,Cliente Estable (0),12.15,-1.0707,Zona Segura (Fidelizado),0.0,2026-11-23 18:54
+NEW-005,Clara Richter (Demo),Alemania,Germany,Femenino,58,1,540,3100000.0,1750000.0,4,1,Riesgo de Fuga (1),98.52,2.0451,Riesgo Crítico Confirmado,3100000.0,2026-11-23 18:54
